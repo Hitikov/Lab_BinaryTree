@@ -634,7 +634,7 @@ void Tree<T>::DrawT()
 
 	window.clear(sf::Color(128, 128, 128));
 
-	DrawElement(this, pow(2, height) * (radius + 10), 1, height, radius * 4, radius, window);
+	DrawElement(this, pow(2, height) * (radius + 10), 1, height, radius * 3, radius, window);
 
 	window.display();
 
@@ -676,7 +676,7 @@ void Tree<T>::DrawElement(Tree<T>* tree, int xpos, int curLevel, int totalLevel,
 	text.setString(buffer.str());
 	text.setFillColor(sf::Color::Black);
 	text.setOutlineColor(sf::Color::White);
-	text.setCharacterSize(radius);
+	text.setCharacterSize(radius * 0.75);
 
 	sf::FloatRect textRect = text.getLocalBounds();
 	text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
