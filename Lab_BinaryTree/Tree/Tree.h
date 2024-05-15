@@ -26,6 +26,7 @@ public:
 	~Tree();
 
 	T get_data();
+	void set_data(T);
 	void replace(T);
 	void delete_left();
 	void delete_right();
@@ -65,13 +66,15 @@ public:
 	Tree<T>* balanced(int);
 
 	void in_order_traversal(std::vector<T>&);
-	Tree<T>* create_bst_from_balanced_tree();
+	Tree<T>* create_balanced_tree();
+	Tree<T>* create_search_tree();
 	void DrawT();
 };
 
 template <typename T>
 Tree<T>::Tree() {
 	left = right = parent = nullptr;
+	data = 0;
 }
 
 template <typename T>
@@ -89,6 +92,12 @@ Tree<T>::~Tree() {
 template <typename T>
 T Tree<T>::get_data() {
 	return data;
+}
+
+template <typename T>
+void Tree<T>::set_data(T dataNew)
+{
+	data = dataNew;
 }
 
 template <typename T>
@@ -614,7 +623,14 @@ void Tree<T>::in_order_traversal(std::vector<T>& vect) {
 }
 
 template <typename T>
-Tree<T>* Tree<T>::create_bst_from_balanced_tree() {
+Tree<T>* Tree<T>::create_balanced_tree() {
+	std::vector<T> sorted_data;
+	this->in_order_traversal(sorted_data);
+	return build_balanced_bst(sorted_data, 0, sorted_data.size() - 1, false);
+}
+
+template <typename T>
+Tree<T>* Tree<T>::create_search_tree() {
 	std::vector<T> sorted_data;
 	this->in_order_traversal(sorted_data);
 	sort(sorted_data.begin(), sorted_data.end());
