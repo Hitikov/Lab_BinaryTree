@@ -62,6 +62,7 @@ public:
 	Tree<T>* next();
 	Tree<T>* prev();
 	Tree<T>* find_min();
+	Tree<T>* find_min_helper();
 	Tree<T>* find_max();
 	Tree<T>* balanced(int);
 
@@ -564,6 +565,13 @@ Tree<T>* Tree<T>::prev() {
 
 template <typename T>
 Tree<T>* Tree<T>::find_min() {
+	Tree<T>* buffer = this->create_search_tree();
+
+	return buffer->find_min_helper();
+}
+
+template <typename T>
+Tree<T>* Tree<T>::find_min_helper() {
 	if (this->left == nullptr) {
 		return this;
 	}

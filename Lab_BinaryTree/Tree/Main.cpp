@@ -30,7 +30,8 @@ int main() {
 		std::cout << "8. View tree" << std::endl;
 		std::cout << "9. Change to balanced tree" << std::endl;
 		std::cout << "10. Change to search tree" << std::endl;
-		std::cout << "11. Visual interpretation" << std::endl;
+		std::cout << "11. Find element with lowest value" << std::endl;
+		std::cout << "12. Visual interpretation" << std::endl;
 		std::cout << "0. Stop program execution" << std::endl;
 
 		std::cout << "Choose command to execute: ";
@@ -84,6 +85,10 @@ int main() {
 			bufferTree = operTree;
 			break;
 		case 11:
+			std::cout << "Adress of element: " << operTree->find_min() << std::endl << "Element value: " << operTree->find_min()->get_data() << std::endl;
+			break;
+		case 12:
+			operTree->print_vert();
 			operTree->DrawT();
 			break;
 		default:
